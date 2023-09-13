@@ -1,0 +1,29 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: run-demo-api-1
+description: main application pipeline
+serialPipeline:
+  stages:
+  - targetId: run-demo-api-dev
+    profiles: [dev]
+  - targetId: run-demo-api-prod
+    profiles: [prod]
+---
+
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: run-demo-api-dev
+description: Cloud Run development service
+run:
+  location: projects/$GOOGLE_CLOUD_PROJECT/locations/asia-northeast1
+---
+
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: run-demo-api-prod
+description: Cloud Run production service
+run:
+  location: projects/$GOOGLE_CLOUD_PROJECT/locations/asia-northeast1
