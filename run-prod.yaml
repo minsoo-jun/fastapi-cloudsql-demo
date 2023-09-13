@@ -6,4 +6,4 @@ spec:
   template:
     spec:
       containers:
-      - image: gcr.io/$GOOGLE_CLOUD_PROJECT/demo-api
+      - image: gcr.io/$PROJECT_ID/demo-api

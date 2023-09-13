@@ -1,3 +1,12 @@
+# pipeline  
+# gcloud deploy apply --file=clouddeploy.yaml --region=asia-northeast1 --project=cloud-build-398808
+# release
+# gcloud deploy releases create test-release-001 \
+#  --project=cloud-build-398808 \
+#  --region=asia-northeast1 \
+#  --delivery-pipeline=run-demo-api-1 \
+#  --images=my-app-image=gcr.io/cloudrun/hello@sha256:98cdb98c2d97a67d5e9183beedfec98ca9d5967acd874409b4800bf4d1a51710
+#  
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
@@ -17,7 +26,7 @@ metadata:
   name: run-demo-api-dev
 description: Cloud Run development service
 run:
-  location: projects/$GOOGLE_CLOUD_PROJECT/locations/asia-northeast1
+  location: projects/$PROJECT_ID/locations/asia-northeast1
 ---
 
 apiVersion: deploy.cloud.google.com/v1
@@ -26,4 +35,4 @@ metadata:
   name: run-demo-api-prod
 description: Cloud Run production service
 run:
-  location: projects/$GOOGLE_CLOUD_PROJECT/locations/asia-northeast1
+  location: projects/$PROJECT_ID/locations/asia-northeast1
